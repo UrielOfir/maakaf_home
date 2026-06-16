@@ -2,43 +2,105 @@
 // 1. Define dynamic design variables (CSS Variables) site-wide
 // ==========================================================================
 
+:root {
+  // Global text font
+  --font-body: 'IBM Plex Sans', 'IBM Plex Sans Hebrew', sans-serif;
+  // Headings font (Birzia)
+  --font-heading: 'Birzia', sans-serif;
+  // Navigation bar font - exact match for Figma body-IBM-Plex Sans Hebrew style
+  --font-navbar: 'IBM Plex Sans', 'IBM Plex Sans Hebrew', sans-serif;
+  // Monospace font
+  --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+// Site-wide typography bindings
+body,
+.td-main,
+main,
+.td-outer,
+.td-sidebar,
+.maakaf-footer {
+  font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-heading) !important;
+}
+
+code, pre, kbd, samp,
+.td-content code {
+  font-family: var(--font-mono) !important;
+}
+
+// Navbar UI configurations - Returned to IBM Plex Sans Hebrew with clean styling
+.td-navbar,
+.navbar,
+.td-navbar .container-fluid,
+.navbar .container-fluid,
+.navbar-nav,
+.navbar-nav .nav-item,
+.navbar-nav .nav-link,
+.navbar-nav .nav-link span,
+.navbar .dropdown-menu,
+.navbar .dropdown-item,
+.navbar .form-control,
+.navbar .btn,
+.navbar-nav .nav-item .nav-link,
+.navbar-nav .nav-item a {
+  font-family: var(--font-navbar) !important; 
+  font-weight: 400 !important;                 
+  letter-spacing: 0.02em !important;           
+}
+
 // --- Values for Light Mode ---
 html[data-bs-theme="light"], html:not([data-bs-theme="dark"]) {
   --bg-main: #FAFAFA;
-  --bg-navbar: #FAFAFA;  
+  --bg-navbar: rgba(250, 250, 250, 0.85); // Transparent for blur effect
 
   --bg-card: #ffffff;
   
   --text-main: #1A3766;      // dark blue (light mode)
   --text-muted: #6EB6EC;     // lighter blue for secondary text
   
-  --border-color: #FAFAFA;   // borders
+  --border-color: #E2EEF8;   // Soft visible border for containers & language box in light mode
   --input-bg: #ffffff;
+
+  // Active navigation link item (like "About us" tab)
+  --nav-link-active-bg: #EFF8FF;
+  --nav-link-active-text: #2181EF;
+
+  // Footer (Figma node 331:5104)
+  --footer-bg: #ffffff;
+  --footer-text: #1a1a1a;
+  --footer-link-hover: #2d5499;
+  --footer-border: #e6e6e6;
 
   .navbar-brand {
     background-image: url('/images/logo-light.png') !important;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: right center; // align to the right for RTL
-    width: 160px;  // adjust width to match your logo proportions
-    height: 40px;
-    display: block;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position: right center !important; 
+    width: 140px !important;  // Adjusted to match Figma layout width
+    height: 40px !important; // Exact match for Figma height spec (image_d05f9d.png)
+    display: block !important;
     padding: 0 !important;
     margin-left: 1.5rem !important;
 
-    // Hide Docsy's default brand image so it won't interfere
+    // Hide Docsy's default brand image
     img, span {
         display: none !important;
     }
   }
-  // Replace the theme toggle icon (light mode)
+
+  // Replace theme toggle icon (light mode)
   .td-light-dark-menu #bd-theme {
     background-image: url('/images/sun-icon-light.svg') !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    background-size: 24px !important;
-    width: 40px !important;
-    height: 40px !important;
+    background-size: 18px !important; 
+    width: 44px !important;            
+    height: 44px !important;           
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -56,23 +118,32 @@ html[data-bs-theme="light"], html:not([data-bs-theme="dark"]) {
 html[data-bs-theme="dark"] {
   --bg-main: #1A1A1A;      
   --bg-navbar: #1A1A1A;
-  --bg-card: #1A1A1A;        // card/background for boxes and cards
+  --bg-card: #1A1A1A;        
   
   --text-main: #EFF8FF;      // readable light text
   --text-muted: #9DD0F3;
   
-  --border-color: #1A1A1A;   // dark border color
+  --border-color: #2D2D2D;   // Visible dark border code
   --input-bg: #1D2E4E;
 
-  // Set the dark-mode logo (from Figma)
+  // Active navigation link item for dark mode
+  --nav-link-active-bg: #1D2E4E;
+  --nav-link-active-text: #9DD0F3;
+
+  // Footer (Figma node 331:5104)
+  --footer-bg: #1A1A1A;
+  --footer-text: #EFF8FF;
+  --footer-link-hover: #9DD0F3;
+  --footer-border: #2D2D2D;
+
   .navbar-brand {
     background-image: url('/images/logo-dark.png') !important;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: right center;
-    width: 160px; // same width as light mode
-    height: 40px;
-    display: block;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position: right center !important;
+    width: 140px !important;  // Adjusted to match Figma layout width
+    height: 40px !important; // Exact match for Figma height spec (image_d05f9d.png)
+    display: block !important;
     padding: 0 !important;
     margin-left: 1.5rem !important;
 
@@ -81,14 +152,14 @@ html[data-bs-theme="dark"] {
     }
   }
 
-  // Replace the theme toggle icon (dark mode)
+  // Replace theme toggle icon (dark mode)
   .td-light-dark-menu #bd-theme {
     background-image: url('/images/sun-icon-dark.svg') !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    background-size: 24px !important;
-    width: 40px !important;
-    height: 40px !important;
+    background-size: 18px !important; 
+    width: 44px !important;            
+    height: 44px !important;           
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -103,80 +174,386 @@ html[data-bs-theme="dark"] {
 }
 
 // ==========================================================================
-// 2. Bind the variables to site elements (applies across pages)
+// 2. Bind variables to site elements
 // ==========================================================================
 
-// Overall site wrapper (docs + main pages)
 body, .td-main, main, .td-outer, .td-sidebar {
     background-color: var(--bg-main) !important;
     color: var(--text-main) !important;
-    transition: background-color 0.3s ease, color 0.3s ease; // smooth transition between modes
+    padding-top: 84px; // Prevent content from hiding under the fixed 84px navbar
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
-// Top navbar across the site
+// Global headings and typography setup
+h1, h2, h3, h4, h5, h6, p, span, th, td, li, time {
+    color: var(--text-main) !important;
+}
+
+// Top navigation bar layout and style (from Figma inspector)
+.navbar {
+  position: fixed !important;             
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  
+  display: flex !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  
+  background-color: var(--bg-navbar) !important; 
+  border-bottom: 1px solid var(--border-color) !important;
+  
+  // Blur effects from Figma
+  backdrop-filter: blur(8px) !important; 
+  -webkit-backdrop-filter: blur(8px) !important; 
+  
+  // Inner container height from Figma (image_d0c137.png)
+  .container, .container-fluid {
+      height: 84px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important; // Keeps Logo on right, Actions on left
+      padding-left: 2rem !important;  // Side breathing space from Figma
+      padding-right: 2rem !important; // Side breathing space from Figma
+  }
+}
+
+// Center the navigation links perfectly regardless of side components
+.navbar-collapse {
+  display: flex !important;
+  justify-content: center !important;
+  flex-grow: 1 !important;
+}
+
+.navbar-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1.5rem !important; // Generous space between links per Figma
+  margin: 0 auto !important; // Forces the links to stay dead-center
+  padding: 0 !important;
+}
+
+// Wrapper for left-side actions (WhatsApp button, HE, Sun icon, Search)
+.navbar-actions-left {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 1.5rem !important; // Space between WhatsApp, HE, and Sun icon
+  margin: 0 !important;
+  padding: 0 !important;
+
+  // Custom typography style for language text inside the box
+  .lang-selector-static, .navbar-lang-wrapper a {
+      font-family: var(--font-navbar) !important;
+      color: var(--text-main) !important;
+      font-weight: 500 !important;
+      font-size: 0.95rem !important;
+      text-decoration: none !important;
+      line-height: 1 !important;
+  }
+}
+
+// Square Language Box component setup from Figma spec (image_cfee83.png)
+.navbar-lang-box {
+  width: 44px !important;       // Fixed width from Figma
+  height: 44px !important;      // Fixed height from Figma
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--border-color) !important; // Matches the Figma container boundary line
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+// Forces the theme toggle menu wrapper to align perfectly straight in the center
+.td-light-dark-menu {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+// Base styling for ALL nav-links to keep them perfectly aligned on the same line
+.navbar-nav .nav-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 32px !important; 
+  padding: 4px 12px !important; 
+  border-radius: 4px !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+// Active link styling
+.navbar-nav .nav-link.active, .navbar-nav .nav-item.active .nav-link {
+  background-color: var(--nav-link-active-bg) !important;
+  color: var(--nav-link-active-text) !important;
+}
+
+// Specific adjustments for Light Mode navbar shadow
 html[data-bs-theme="light"], html:not([data-bs-theme="dark"]) {
     .navbar {
-        // Convert HEX to rgba with ~85% opacity so the blur works
-        background-color: rgba(250, 250, 250, 0.85) !important; 
-        
-        // Exact line from the Figma inspector:
-        backdrop-filter: blur(8px) !important; 
-        -webkit-backdrop-filter: blur(8px) !important; // Safari/WebKit support
-        
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02) !important;
-        border-bottom: 1px solid var(--border-color) !important;
     }
 }
 
-// Dark mode navbar styling
+// Specific adjustments for Dark Mode navbar shadow
 html[data-bs-theme="dark"] {
-    
     .navbar {
-        background-color: var(--bg-navbar) !important; 
-        
-        // Adjust border and link colors to match the Figma dark mode
-        border-bottom: 1px solid var(--border-color) !important;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
 
         .nav-link, .nav-item a, .navbar-brand, .navbar-title, .navbar-brand a {
-            color: var(--text-main) !important; // pulls your #EFF8FF
+            color: var(--text-main) !important; 
         }
         
         .nav-link:hover {
-            color: var(--text-muted) !important; // pulls your #9DD0F3
+            color: var(--text-muted) !important; 
         }
     }
 }
 
-// כל התיבות, האלרטים, הכרטיסים והטבלאות בכל האתר
+// Cards, alerts, and boxes setup
 .card, .bg-dark, .alert-info, .td-box, [class*="bg-opacity-"], div[style*="background-color"] {
     background-color: var(--bg-card) !important;
     color: var(--text-main) !important;
     border: 1px solid var(--border-color) !important;
 }
 
-// Headings, paragraphs, and cells across docs and articles
-h1, h2, h3, h4, h5, h6, p, span, th, td, li, time {
-    color: var(--text-main) !important;
-}
-
-// Inputs, forms, and search fields across the site
+// Inputs and form fields
 input[type="text"], .form-control, .search-input {
     background-color: var(--input-bg) !important;
     color: var(--text-main) !important;
     border: 1px solid var(--border-color) !important;
 }
 
-// WhatsApp button - stays green in both modes (per Figma)
-.navbar a[href*="chat.whatsapp"] {
+// WhatsApp button - stays green in both modes
+.navbar a[href*="chat.whatsapp"], .navbar a.btn-whatsapp-community {
     background-color: #5CB85C !important;
     color: #ffffff !important;
-    border-radius: 50px !important;
-    padding: 0.5rem 1.25rem !important;
+    border-radius: 50px !important; // Full pill border shape
+    padding: 6px 16px !important;
+    font-family: var(--font-navbar) !important;
     font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    text-decoration: none !important;
+    border: none !important;
+    height: 36px !important;
     
     &:hover {
         background-color: #4cae4c !important;
         color: #ffffff !important;
     }
+}
+
+// ==========================================================================
+// 3. Footer (Figma node 331:5104)
+// ==========================================================================
+
+.maakaf-footer {
+  width: 100%;
+  margin: 0;
+  padding: 64px 0;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  font-size: 14px;
+  line-height: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.maakaf-footer__container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.maakaf-footer__content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 160px;
+}
+
+.maakaf-footer__brand {
+  width: 282px;
+  flex: 0 0 282px;
+}
+
+.maakaf-footer__logo {
+  display: block;
+  width: 139px;
+  height: 40px;
+  margin-bottom: 24px;
+}
+
+.maakaf-footer__logo--dark {
+  display: none;
+}
+
+html[data-bs-theme="dark"] {
+  .maakaf-footer__logo--light {
+    display: none;
+  }
+
+  .maakaf-footer__logo--dark {
+    display: block;
+  }
+}
+
+.maakaf-footer__brand p {
+  margin: 0 0 24px;
+  color: var(--footer-text) !important;
+}
+
+.maakaf-footer__column {
+  flex: 0 0 auto;
+  text-align: start;
+}
+
+.maakaf-footer__column h2 {
+  margin: 0 0 16px;
+  color: var(--footer-text) !important;
+  font-family: var(--font-body) !important;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.maakaf-footer__column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.maakaf-footer a {
+  color: var(--footer-text);
+  text-decoration: none;
+}
+
+.maakaf-footer a:hover,
+.maakaf-footer a:focus-visible {
+  color: var(--footer-link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.maakaf-footer__community a {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.maakaf-footer__socials {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  /*rtl:ignore*/
+  direction: ltr;
+}
+
+.maakaf-footer__socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+}
+
+.maakaf-footer__socials .fa-youtube {
+  color: #ff0000;
+}
+
+.maakaf-footer__socials .fa-meetup {
+  color: #f64060;
+}
+
+.maakaf-footer__socials .fa-discord {
+  color: #5865f2;
+}
+
+.maakaf-footer__socials .fa-whatsapp {
+  color: #48c95f;
+}
+
+.maakaf-footer__socials .fa-github {
+  color: var(--footer-text);
+}
+
+.maakaf-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--footer-border);
+}
+
+.maakaf-footer__bottom p {
+  margin: 0;
+  color: var(--footer-text) !important;
+}
+
+.maakaf-footer__credit {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  /*rtl:ignore*/
+  direction: ltr;
+}
+
+@media (max-width: 991.98px) {
+  .maakaf-footer {
+    padding: 48px 0;
+  }
+
+  .maakaf-footer__container {
+    padding: 0 32px;
+  }
+
+  .maakaf-footer__content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 64px;
+  }
+
+  .maakaf-footer__brand {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .maakaf-footer {
+    padding: 40px 0 32px;
+  }
+
+  .maakaf-footer__container {
+    padding: 0 24px;
+  }
+
+  .maakaf-footer__content {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .maakaf-footer__brand {
+    grid-column: auto;
+  }
+
+  .maakaf-footer__bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
 }

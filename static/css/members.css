@@ -16,7 +16,7 @@ html.light {
   --chart-grid-color: rgba(100, 116, 139, 0.18);
   --chart-muted-text: rgba(31, 41, 55, 0.82);
   --chart-tooltip-bg: rgba(15, 23, 42, 0.96);
-  --chart-font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  --chart-font-family: var(--font-body, "IBM Plex Sans", "IBM Plex Sans Hebrew", sans-serif);
   --chart-link-color: #ffffff;
   --chart-link-hover-color: #000000;
   --chart-frame-highlight: rgba(255, 255, 255, 0.6);
@@ -42,7 +42,7 @@ html.dark {
   --chart-grid-color: rgba(148, 163, 184, 0.14);
   --chart-muted-text: rgba(203, 213, 225, 0.72);
   --chart-tooltip-bg: rgba(2, 6, 23, 0.96);
-  --chart-font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  --chart-font-family: var(--font-body, "IBM Plex Sans", "IBM Plex Sans Hebrew", sans-serif);
   --chart-link-color: #bcc9d6;
   --chart-link-hover-color: #f8fafc;
   --chart-frame-highlight: rgba(255, 255, 255, 0.04);
@@ -54,6 +54,7 @@ html.dark {
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  font-family: var(--font-body, "IBM Plex Sans", "IBM Plex Sans Hebrew", sans-serif);
 }
 
 /* Expand content to full width */
