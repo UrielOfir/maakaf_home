@@ -79,6 +79,110 @@ html[dir="rtl"] {
   }
 }
 
+// ==========================================================================
+// 1. הגדרת משתני עיצוב דינמיים (CSS Variables) לכל האתר
+// ==========================================================================
+
+// --- ערכים עבור מצב בהיר (Light Mode) ---
+html[data-bs-theme="light"], html:not([data-bs-theme="dark"]) {
+  --bg-main: #FAFAFA;
+  --bg-navbar: #FAFAFA;  
+
+  --bg-card: #ffffff;
+  
+  --text-main: #1A3766;      // כחול כהה לייט
+  --text-muted: #6EB6EC;     // כחול בהיר לטקסט משני
+  
+  --border-color: #FAFAFA;   //  מסגרות 
+  --input-bg: #ffffff;
+
+  .navbar-brand {
+    background-image: url('/images/logo-light.png') !important;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center; // יישור לימין בגלל העברית
+    width: 160px;  // תשני את הרוחב בהתאם לפרופורציות של הלוגו שלך
+    height: 40px;
+    display: block;
+    padding: 0 !important;
+    margin-left: 1.5rem !important;
+
+    // מעלימים את תמונת ברירת המחדל הישנה של Docsy כדי שלא תפריע ברקע
+    img, span {
+        display: none !important;
+    }
+  }
+  // החלפת אייקון מצב התצוגה (לייט מוד)
+  .td-light-dark-menu #bd-theme {
+    background-image: url('/images/sun-icon-light.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 24px !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+
+    svg {
+      display: none !important;
+    }
+  }
+}
+
+// --- ערכים עבור מצב כהה (Dark Mode) ---
+html[data-bs-theme="dark"] {
+  --bg-main: #1A1A1A;      
+  --bg-navbar: #1A1A1A;
+  --bg-card: #1A1A1A;        // כחול 900 לתיבות וכרטיסים
+  
+  --text-main: #EFF8FF;      // טקסט בהיר וקריא
+  --text-muted: #9DD0F3;
+  
+  --border-color: #1A1A1A;   // צבע מסגרות דארק
+  --input-bg: #1D2E4E;
+
+  // הגדרת הלוגו של הדארק מוד מהפיגמה
+  .navbar-brand {
+    background-image: url('/images/logo-dark.png') !important;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
+    width: 160px; // אותו רוחב כמו בלייט מוד
+    height: 40px;
+    display: block;
+    padding: 0 !important;
+    margin-left: 1.5rem !important;
+
+    img, span {
+        display: none !important;
+    }
+  }
+
+  // החלפת אייקון מצב התצוגה (דארק מוד)
+  .td-light-dark-menu #bd-theme {
+    background-image: url('/images/sun-icon-dark.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 24px !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+
+    svg {
+      display: none !important;
+    }
+  }
+}
+
 /* Figma footer: node 451:4889 */
 .maakaf-footer {
   width: 100%;
