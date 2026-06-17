@@ -71,11 +71,26 @@ html[dir="rtl"] {
   .container,
   .container-fluid {
     overflow: visible; // fixed for lang and brightness menus to be visible
-  }
 
-  .row {
-    margin-left: 0;
-    margin-right: 0;
+  }
+  // החלפת אייקון מצב התצוגה (לייט מוד)
+  .td-light-dark-menu #bd-theme {
+    background-image: url('/images/sun-icon-light.svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 24px !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+
+    svg {
+      display: none !important;
+    }
   }
 }
 
