@@ -1,5 +1,5 @@
 {{ $cover := and
-    (.HasShortcode "blocks/cover")
+    (or (.HasShortcode "blocks/cover") (.HasShortcode "maakaf-hero"))
     (not .Site.Params.ui.navbar_translucent_over_cover_disable)
 -}}
 {{ $baseURL := urls.Parse $.Site.Params.Baseurl -}}

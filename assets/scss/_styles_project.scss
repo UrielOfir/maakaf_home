@@ -187,10 +187,10 @@ html:not([data-bs-theme="dark"]) {
     background-color: #ffffff !important;
   }
 
-  .td-cover-block.bg-primary h1,
-  .td-cover-block.bg-primary h2,
-  .td-cover-block.bg-primary h3,
-  .td-cover-block.bg-primary p {
+  .td-cover-block.bg-primary:not(.maakaf-hero) h1,
+  .td-cover-block.bg-primary:not(.maakaf-hero) h2,
+  .td-cover-block.bg-primary:not(.maakaf-hero) h3,
+  .td-cover-block.bg-primary:not(.maakaf-hero) p {
     color: #111111;
   }
 }
@@ -597,6 +597,262 @@ html[dir="rtl"] {
   .row {
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+/* Figma hero: node 314:4073 */
+.maakaf-hero {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fafafa !important;
+  background-image: none !important;
+  color: #1a1a1a;
+
+  &.td-cover-block {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: auto;
+  }
+}
+
+.maakaf-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 120px 80px;
+}
+
+.maakaf-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  text-align: center;
+}
+
+.maakaf-hero__headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  margin: 0;
+  font-family: $font-birzia;
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 88px;
+}
+
+.maakaf-hero__headline-primary {
+  display: block;
+  color: #2c57a5 !important;
+}
+
+.maakaf-hero__headline-secondary {
+  display: block;
+  color: #1a1a1a !important;
+}
+
+.maakaf-hero__subtitle {
+  width: 100%;
+  margin: 0;
+  color: #1a1a1a !important;
+  font-family: "IBM Plex Sans Hebrew", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+.maakaf-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.maakaf-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 56px;
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-family: "IBM Plex Sans Hebrew", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+  span {
+    color: inherit !important;
+  }
+}
+
+.maakaf-hero__btn--secondary {
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #2c57a5 !important;
+
+  i {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: #2c57a5;
+    color: #2c57a5 !important;
+    text-decoration: none;
+  }
+}
+
+.maakaf-hero__btn--whatsapp {
+  border: 1px solid #48c95f;
+  background: #48c95f;
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
+  color: #fff !important;
+
+  &:hover,
+  &:focus-visible {
+    background: #3eb854;
+    border-color: #3eb854;
+    color: #fff !important;
+    text-decoration: none;
+  }
+}
+
+.maakaf-hero__cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 894px;
+}
+
+.maakaf-hero__card {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 200px;
+  margin: 0;
+  padding: 20px 40px;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.maakaf-hero__card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: #2c57a5;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.maakaf-hero__card-value {
+  margin: 0;
+  color: #1a1a1a !important;
+  font-family: "IBM Plex Sans Hebrew", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.maakaf-hero__card-label {
+  margin: 0;
+  color: #404040 !important;
+  font-family: "IBM Plex Sans Hebrew", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+@media (max-width: 991.98px) {
+  .maakaf-hero__inner {
+    padding: 80px 32px;
+    gap: 40px;
+  }
+
+  .maakaf-hero__headline {
+    font-size: 56px;
+    line-height: 68px;
+  }
+
+  .maakaf-hero__subtitle {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .maakaf-hero__cards {
+    max-width: 100%;
+  }
+
+  .maakaf-hero__card {
+    flex: 1 1 calc(50% - 16px);
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .maakaf-hero__inner {
+    padding: 64px 24px;
+    gap: 32px;
+  }
+
+  .maakaf-hero__headline {
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  .maakaf-hero__subtitle {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .maakaf-hero__actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+  }
+
+  .maakaf-hero__btn {
+    width: 100%;
+    max-width: 360px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .maakaf-hero__cards {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .maakaf-hero__card {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    padding: 20px 24px;
   }
 }
 
