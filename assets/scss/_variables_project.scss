@@ -66,37 +66,31 @@ body, .td-main, main, .td-outer, .td-sidebar {
     transition: background-color 0.3s ease, color 0.3s ease; // מעבר חלק ויפה בין המצבים
 }
 
-// סרגל הניווט העליון (Navbar) בכל האתר
+// סרגל הניווט העליון (Navbar) בכל האתר — Docsy משתמש ב-.td-navbar
 html[data-bs-theme="light"], html:not([data-bs-theme="dark"]) {
-    .navbar {
-        // אנחנו הופכים את ה-HEX ל-rgba עם 85% אטימות כדי שהטשטוש יעבוד
-        background-color: rgba(250, 250, 250, 0.85) !important; 
-        
-        // השורה המדויקת מהחלון של פיגמה:
-        backdrop-filter: blur(8px) !important; 
-        -webkit-backdrop-filter: blur(8px) !important; // תמיכה בדפדפני ספארי/אפל
-        
+    .navbar,
+    .td-navbar:not(.maakaf-navbar) {
+        background-color: rgba(250, 250, 250, 0.85) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02) !important;
         border-bottom: 1px solid var(--border-color) !important;
     }
 }
 
-// חפשי את האזור המיועד לדארק מוד בקובץ ושני את ה-navbar שבו לזה:
 html[data-bs-theme="dark"] {
-    
-    .navbar {
-        background-color: var(--bg-navbar) !important; 
-        
-        // משנה גם את צבעי המסגרת והקישורים שיתאימו לדארק מוד של פיגמה
+    .navbar,
+    .td-navbar:not(.maakaf-navbar) {
+        background-color: var(--bg-navbar) !important;
         border-bottom: 1px solid var(--border-color) !important;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
 
         .nav-link, .nav-item a, .navbar-brand, .navbar-title, .navbar-brand a {
-            color: var(--text-main) !important; // ימשוך את ה- #EFF8FF שלך משורה 25
+            color: var(--text-main) !important;
         }
-        
+
         .nav-link:hover {
-            color: var(--text-muted) !important; // ימשוך את ה- #9DD0F3 שלך משורה 26
+            color: var(--text-muted) !important;
         }
     }
 }
@@ -120,16 +114,4 @@ input[type="text"], .form-control, .search-input {
     border: 1px solid var(--border-color) !important;
 }
 
-// כפתור הווטסאפ - נשאר ירוק בולט בשני המצבים לפי הפיגמה
-.navbar a[href*="chat.whatsapp"] {
-    background-color: #5CB85C !important;
-    color: #ffffff !important;
-    border-radius: 50px !important;
-    padding: 0.5rem 1.25rem !important;
-    font-weight: 600 !important;
-    
-    &:hover {
-        background-color: #4cae4c !important;
-        color: #ffffff !important;
-    }
-}
+// כפתור הווטסאפ — מעוצב דרך .maakaf-navbar__cta ב-_styles_project.scss
