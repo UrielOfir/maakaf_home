@@ -1,3 +1,41 @@
+// IBM Plex Sans Hebrew font
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&display=swap');
+
+// Birzia — local font files in assets/fonts/
+@font-face {
+  font-family: 'Birzia';
+  src: url('../fonts/Birzia-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Birzia';
+  src: url('../fonts/Birzia-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Birzia';
+  src: url('../fonts/Birzia-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Birzia';
+  src: url('../fonts/Birzia-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+$font-birzia: 'Birzia', sans-serif;
+
 // ==========================================================================
 // 1. Theme CSS variables, logo, and light/dark toggle icons
 // ==========================================================================
@@ -96,6 +134,10 @@ html[data-bs-theme="dark"] {
 }
 
 /* General reset */
+:root {
+  --maakaf-navbar-height: 84px;
+}
+
 html,
 body,
 main {
@@ -105,6 +147,10 @@ main {
   max-width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
+}
+
+body {
+  padding-top: var(--maakaf-navbar-height);
 }
 
 html[data-bs-theme="light"],
@@ -151,8 +197,10 @@ html:not([data-bs-theme="dark"]) {
 
 /* Figma navbar: node 436:4409 */
 .maakaf-navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1030;
   width: 100%;
   padding: 20px 0;
@@ -162,9 +210,31 @@ html:not([data-bs-theme="dark"]) {
     rgba(255, 255, 255, 0.56) 7.53%,
     rgba(255, 255, 255, 0.35) 96.49%
   );
+  background-color: rgba(250, 250, 250, 0.92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  font-family: "IBM Plex Sans Hebrew", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  font-family: $font-birzia;
+  font-weight: 500;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+
+  &.navbar-bg-onscroll,
+  &.navbar-bg-onscroll--fade {
+    background-color: rgba(250, 250, 250, 0.96);
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  &.td-navbar-cover {
+    background-color: transparent;
+    box-shadow: none;
+
+    &.navbar-bg-onscroll,
+    &.navbar-bg-onscroll--fade {
+      background-color: rgba(250, 250, 250, 0.96);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+  }
 
   .td-navbar-nav-scroll {
     overflow: visible;
@@ -184,6 +254,7 @@ html:not([data-bs-theme="dark"]) {
   }
 
   .nav-link {
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
     font-weight: 400;
   }
 
@@ -249,8 +320,9 @@ html:not([data-bs-theme="dark"]) {
   border-radius: 8px;
   color: #1a1a1a !important;
   background-color: transparent !important;
+  font-family: $font-birzia;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 20px;
   text-decoration: none;
   white-space: nowrap;
@@ -264,7 +336,7 @@ html:not([data-bs-theme="dark"]) {
 
   &.active {
     color: #1a3766 !important;
-    font-weight: 600;
+    font-weight: 700;
   }
 }
 
@@ -287,8 +359,9 @@ html:not([data-bs-theme="dark"]) {
   background-color: #48c95f;
   box-shadow: 0 4px 3px rgba(0, 0, 0, 0.1);
   color: #fff !important;
+  font-family: IBM Plex Sans Hebrew, sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 20px;
   text-decoration: none;
   white-space: nowrap;
@@ -298,12 +371,20 @@ html:not([data-bs-theme="dark"]) {
     line-height: 1;
   }
 
+  span {
+    color: #fff !important;
+  }
+
   &:hover,
   &:focus-visible {
     background-color: #3eb854;
     border-color: #3eb854;
     color: #fff !important;
     text-decoration: none;
+
+    span {
+      color: #fff !important;
+    }
   }
 }
 
@@ -335,6 +416,7 @@ html:not([data-bs-theme="dark"]) {
   border: 0;
   background: transparent !important;
   color: #1a1a1a !important;
+  font-family: IBM Plex Sans Hebrew, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
@@ -411,11 +493,31 @@ html[data-bs-theme="dark"] {
 html[data-bs-theme="dark"] {
   .maakaf-navbar {
     border-bottom-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(26, 26, 26, 0.92);
     background-image: linear-gradient(
       100.24deg,
       rgba(26, 26, 26, 0.92) 7.53%,
       rgba(26, 26, 26, 0.78) 96.49%
     );
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    &.navbar-bg-onscroll,
+    &.navbar-bg-onscroll--fade {
+      background-color: rgba(26, 26, 26, 0.98);
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    }
+
+    &.td-navbar-cover {
+      background-color: transparent;
+      box-shadow: none;
+
+      &.navbar-bg-onscroll,
+      &.navbar-bg-onscroll--fade {
+        background-color: rgba(26, 26, 26, 0.98);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+      }
+    }
   }
 
   .maakaf-navbar__link {
@@ -439,6 +541,10 @@ html[data-bs-theme="dark"] {
 }
 
 @media (max-width: 1199.98px) {
+  :root {
+    --maakaf-navbar-height: 124px;
+  }
+
   .maakaf-navbar__container {
     padding: 0 32px;
   }
@@ -457,6 +563,10 @@ html[data-bs-theme="dark"] {
 }
 
 @media (max-width: 767.98px) {
+  :root {
+    --maakaf-navbar-height: 124px;
+  }
+
   .maakaf-navbar {
     padding: 12px 0;
   }
