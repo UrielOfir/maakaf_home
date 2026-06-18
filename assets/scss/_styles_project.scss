@@ -760,14 +760,10 @@ html[dir="rtl"] {
 }
 
 .maakaf-hero__card-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 28px;
   height: 28px;
-  color: #2c57a5;
-  font-size: 28px;
-  line-height: 1;
+  object-fit: contain;
 }
 
 .maakaf-hero__card-value {

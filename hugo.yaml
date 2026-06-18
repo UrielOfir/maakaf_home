@@ -213,6 +213,14 @@ module:
   mounts:
     - source: layouts
       target: layouts
+    - source: static/images
+      target: static/images
+    - source: static/css
+      target: static/css
+    - source: static/js
+      target: static/js
+    - source: static/favicons
+      target: static/favicons
     - source: assets/fonts
       target: static/fonts
   hugoVersion:
